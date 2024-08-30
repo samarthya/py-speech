@@ -101,6 +101,41 @@ The main script performs the following steps:
 3. Performs spell checking on the transcribed text
 4. Saves the corrected text to a Word document
 
+## Coverage
+
+```bash
+> coverage run -m unittest sp_test.py
+```
+
+```bash
+Listening... Say 'program stop' to end the session.
+Recognized: this is a test
+Recognized: program stop
+Stopping the program...
+.Listening... Say 'program stop' to end the session.
+Could not request results; Test error
+Recognized: program stop
+Stopping the program...
+.Listening... Say 'program stop' to end the session.
+Could not understand audio
+Recognized: program stop
+Stopping the program...
+.Text saved to test_output.docx
+..
+----------------------------------------------------------------------
+Ran 5 tests in 0.106s
+```
+
+```bash
+> python -m coverage report -m
+Name         Stmts   Miss  Cover   Missing
+------------------------------------------
+sp.py           37      0   100%
+sp_test.py      37      1    97%   80
+------------------------------------------
+TOTAL           74      1    99%
+```
+
 ## Contributing
 
 Contributions to the Speech Recognition Program are welcome! Here are a few ways you can help:
