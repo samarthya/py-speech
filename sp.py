@@ -21,6 +21,8 @@ def listen_and_transcribe():
     full_text = []
 
     with microphone as source:
+        # helps improve speech recognition accuracy by analyzing the background
+        # noise present in the audio source.
         recognizer.adjust_for_ambient_noise(source)
 
         while True:
