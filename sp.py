@@ -107,11 +107,3 @@ class SpeechToText:
         doc.add_paragraph(text)
         doc.save(filename)
         print(f"Text saved to {filename}")
-
-
-# Example usage:
-if __name__ == "__main__":
-    speech_to_text = SpeechToText()  # Use default English language
-    transcribed_text = speech_to_text.listen_and_transcribe()
-    corrected_text = speech_to_text.spell_check(transcribed_text)
-    speech_to_text.save_to_word(corrected_text)
