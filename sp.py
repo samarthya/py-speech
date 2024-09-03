@@ -1,9 +1,9 @@
-# pylint: disable=invalid-name
 """Speech to text
 
 """
-import speech_recognition as sr
 import logging
+
+import speech_recognition as sr
 from docx import Document
 from spellchecker import SpellChecker
 
@@ -23,7 +23,8 @@ class SpeechToText:
         Initializes the SpeechToText object.
 
         Args:
-            language (str, optional): The language to use for speech recognition. Defaults to "en-US".
+            language (str, optional): The language to use for speech recognition.
+                                      Defaults to "en-US".
         """
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
@@ -87,9 +88,11 @@ class SpeechToText:
         corrected_words = []
 
         for word in words:
-            corrected_word = spell.correction(word)
-            corrected_words.append(corrected_word)
-
+            if "." in word and any(c.isalpha() for c in word):
+                corrected_words.append(word)  # Don't try to correct URLs
+            else:
+                corrected_word = spell.correction(word)
+                corrected_words.append(corrected_word)
 
         logging.debug('Corrected text: %s', " ".join(corrected_words))
         return " ".join(corrected_words)
