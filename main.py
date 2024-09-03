@@ -1,16 +1,16 @@
 """Main function for the program.
 """
 
-from sp import listen_and_transcribe, spell_check, save_to_word
-
+from sp import SpeechToText
 
 def main():
     """Entry point for the program.
 
     """
-    transcribed_text = listen_and_transcribe()
-    corrected_text = spell_check(transcribed_text)
-    save_to_word(corrected_text)
+    sp = SpeechToText()
+    transcribed_text = sp.listen_and_transcribe()
+    corrected_text = sp.spell_check(transcribed_text)
+    sp.save_to_word(corrected_text)
 
 if __name__ == "__main__":
     main()
